@@ -16,7 +16,8 @@ export function configureFakeAPI() {
                         let user = filteredUsers[0];
                         let responseJson = {
                             id: user.id,
-                            username: user.username
+                            username: user.username,
+                            token: 'IDENTIFIER-TOKEN'
                         };
                         resolve({ ok: true, json: () => responseJson });
                     } else {

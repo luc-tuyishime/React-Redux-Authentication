@@ -7,10 +7,21 @@ export const alertActions = {
 };
 
 function success(message) {
+    return {
+        type: alertActions.success,
+        message
+    }
 }
 
 function error(message) {
+    return {
+        type: alertActions.error,
+        message
+    }
 }
 
 function clear() {
+    return {
+        type: alertActions.clear
+    }
 }
