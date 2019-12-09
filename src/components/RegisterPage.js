@@ -33,9 +33,7 @@ class RegisterPage extends Component {
         })
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('here are the next props', nextProps);
-    }
+
 
     handleSubmit(event) {
         // handle button click and dispatch register
@@ -43,7 +41,9 @@ class RegisterPage extends Component {
         this.setState({ submitted: true });
         const { user } = this.state;
         const { dispatch } = this.props;
-        return (user.username && user.password) ? (dispatch(userActions.register(user))) : '';
+        return (user.username && user.password) ?
+            (dispatch(userActions.register(user))) :
+            '';
 
     }
 

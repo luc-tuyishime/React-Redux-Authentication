@@ -32,7 +32,9 @@ class LoginPage extends Component {
         this.setState({ submitted: true });
         const { username, password } = this.state;
         const { dispatch } = this.props;
-        return (username && password) ? (dispatch(userActions.login(username, password))) : '';
+        return (username && password) ?
+            (dispatch(userActions.login(username, password))) :
+            '';
 
     }
 
