@@ -84,7 +84,6 @@ class RegisterPage extends Component {
 
 // complete the below function
 function mapStateToProps(state) {
-    console.log('here are the state ====>', state);
     const { registering } = state.registration;
     return {
         registering
