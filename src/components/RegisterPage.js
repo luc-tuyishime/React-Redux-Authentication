@@ -48,9 +48,14 @@ class RegisterPage extends Component {
     }
 
     render() {
+        const { registering } = this.props;
         const { user, submitted } = this.state;
         return (
+
             <div className="col-md-6 col-md-offset-3">
+                {registering &&
+                    <div className="alert alert-success" role="alert">Registration successfull</div>
+                }
                 <h2>Register</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !user.username ? ' has-error' : '')}>
@@ -79,6 +84,7 @@ class RegisterPage extends Component {
 
 // complete the below function
 function mapStateToProps(state) {
+    console.log('here are the state ====>', state);
     const { registering } = state.registration;
     return {
         registering

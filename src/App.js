@@ -11,6 +11,9 @@ import RegisterPage from './components/RegisterPage';
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isActive: true
+        }
 
         const { dispatch } = this.props;
         history.listen((location, action) => {
@@ -18,13 +21,31 @@ class App extends Component {
         });
     }
 
+    hideAlert() {
+        this.setState({
+            isActive: false,
+        });
+    }
+
     render() {
         const { alert } = this.props;
+        const { type, message } = alert;
+
         return (
             <div className="container">
                 <div className="col-sm-8 col-sm-offset-2">
-                    {alert.message &&
-                        <div className={`alert ${alert.type}`}>{alert.message}</div>}
+                    {this.state.isActive && alert.message &&
+                        <div className={`alert ${type}`}>
+                            <button
+                                type="button"
+                                className="close"
+                                data-dismiss="alert"
+                                aria-label="Close"
+                                onClick={() => this.hideAlert()}
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {message}</div>}
                     <Router history={history}>
                         <div>
                             <PrivateRoute exact path="/" component={HomePage} />

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { userActions } from '../actions';
+import '../style/LoginPage.css';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -58,7 +60,9 @@ class LoginPage extends Component {
                     </div>
                     <div className="form-group">
                         <button className="btn btn-primary">Login</button>
+                        <Link className="register-link" to="/register">Register</Link>
                     </div>
+
                 </form>
             </div>
         );
@@ -66,6 +70,7 @@ class LoginPage extends Component {
 }
 
 function mapStateToProps(state) {
+
     const { loggingIn } = state.authentication;
     return {
         loggingIn
