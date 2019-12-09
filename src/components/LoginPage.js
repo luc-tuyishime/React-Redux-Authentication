@@ -15,7 +15,8 @@ class LoginPage extends Component {
         this.state = {
             username: '',
             password: '',
-            submitted: false
+            submitted: false,
+            alert: {}
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,6 +28,11 @@ class LoginPage extends Component {
         this.setState({ [name]: value });
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { alert } = this.state;
+        this.setState({ alert: { ...alert, ...nextProps.alert } });
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.setState({ submitted: true });
@@ -35,13 +41,15 @@ class LoginPage extends Component {
         return (username && password) ?
             (dispatch(userActions.login(username, password))) :
             '';
-
     }
 
     render() {
-        const { username, password, submitted } = this.state;
+        const { username, password, submitted, alert } = this.state;
         return (
             <div className="col-md-6 col-md-offset-3">
+                {alert ?
+                    <div className={`alert ${alert.type}`} role="alert">{alert.message}</div> : ''
+                }
                 <h2>Login</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
@@ -70,10 +78,11 @@ class LoginPage extends Component {
 }
 
 function mapStateToProps(state) {
-
+    const { alert } = state;
     const { loggingIn } = state.authentication;
     return {
-        loggingIn
+        loggingIn,
+        alert
     }
 }
 
