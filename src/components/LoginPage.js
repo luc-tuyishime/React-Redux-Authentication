@@ -1,6 +1,5 @@
 import React from 'react';
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { userActions } from '../actions';
@@ -28,7 +27,6 @@ class LoginPage extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('here are the properties ===>>', this.props);
         this.setState({ submitted: true });
         const { username, password } = this.state;
         const { dispatch } = this.props;
@@ -68,7 +66,6 @@ class LoginPage extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('here are the state', state);
     const { loggingIn } = state.authentication;
     return {
         loggingIn

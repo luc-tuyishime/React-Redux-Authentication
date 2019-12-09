@@ -8,20 +8,20 @@ export const alertActions = {
 
 function success(message) {
     return {
-        type: alertActions.success,
+        type: alertConstants.SUCCESS,
         message
     }
 }
 
 function error(message) {
     return {
-        type: alertActions.error,
+        type: alertConstants.ERROR,
         message
     }
 }
 
 function clear() {
     return {
-        type: alertActions.clear
+        type: alertConstants.CLEAR
     }
 }
